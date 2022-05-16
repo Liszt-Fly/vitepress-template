@@ -1,0 +1,30 @@
+{
+  "name": "vitepress-template",
+  "version": "1.0.0",
+  "description": "this is my vitepress-template",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liszt-Fly/vitepress-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liszt-Fly/vitepress-template/issues"
+  },
+  "homepage": "https://github.com/Liszt-Fly/vitepress-template#readme",
+  "dependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/request": "^2.48.8",
+    "fs-extra": "^10.1.0",
+    "gray-matter": "^4.0.3",
+    "request": "^2.88.2",
+    "vitepress": "^0.22.4"
+  }
+}
