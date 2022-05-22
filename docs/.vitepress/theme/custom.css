@@ -1,3 +1,6 @@
 :root {
-	--code-inline-bg-color: #1f1f1f;
+	--c-brand: #646cff;
+	--c-brand-light: #747bff;
+	--font-family-base: "FZGDCTis Light";
+	--font-family-mono: "UniversLTPro";
 }

@@ -1,8 +1,8 @@
 import fsp from "fs-extra"
 import path from "path"
-import { file } from "../types/file"
-let workroot = path.resolve(process.cwd(), "docs", "target")
+import { file } from "../interfaces/file"
 
+let workroot = path.resolve("docs", "target",)
 let fileTree: file[] = []
 function read(root: string, space: file[]) {
     console.log(process.cwd())
@@ -13,12 +13,9 @@ function read(root: string, space: file[]) {
         const stat = fsp.statSync(r_path)
 
         if (stat.isDirectory()) {
-
-
             let container: file = {
                 text: item,
                 children: [],
-
             }
             space.push(container)
             read(r_path, container.children!)
