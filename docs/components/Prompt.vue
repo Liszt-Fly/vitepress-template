@@ -17,7 +17,7 @@ const props = defineProps({
 })
 </script>
 
-<style >
+<style scoped >
 .prompt-container {
     background-color: rgb(235, 235, 235);
     padding: 5px;
