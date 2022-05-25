@@ -21,46 +21,48 @@
             ｜
             <div class="symbol">{{ word_symobl }}</div>
         </div>
-
-
     </div>
 </template>
 
 <script lang="ts" setup>
 import { dict } from 'interfaces/dict';
 import { onMounted, Ref, ref, computed, ComputedRef } from 'vue';
-import RandomStroke from './RandomStroke.vue';
+//* declaration
 let state: Ref<"icon-bofang" | "icon-zanting"> = ref("icon-bofang")
 let word = ref<HTMLDivElement | null>()
 const audio = ref<HTMLAudioElement | null>();
 let word_value: ComputedRef<String>
 let word_symobl: Ref<String> = ref("")
 let word_property: Ref<String> = ref("")
-const playAudio = () => {
-    audio.value!.play()
-    state.value = "icon-zanting"
+//* methods
+const requestWord = (word: String) => {
+    fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}\?key\=acab3f0a-f181-49df-82b1-8dce68443227`).then((val) => {
+        val.json().then((v) => {
+            let data: dict = v[0]
+            word_symobl.value = data.hwi.prs[0].mw
+            word_property.value = data.fl
+        })
+    })
 }
-onMounted(() => {
+const dealWithAudio = () => {
     audio.value!.onplay = () => {
         state.value = "icon-zanting"
     }
     audio.value!.onended = () => {
         state.value = "icon-bofang"
     }
-    word.value!.innerText = word.value!.innerText.toLowerCase()
+}
+const playAudio = () => {
+    audio.value!.play()
+    state.value = "icon-zanting"
+}
+onMounted(() => {
+    dealWithAudio()
     word_value = computed(() => {
         if (word.value == null) return "error"
         return word.value!.innerText.toLowerCase()
     })
-    //请求API
-    fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/reading\?key\=acab3f0a-f181-49df-82b1-8dce68443227`).then((val) => {
-        val.json().then((v) => {
-            let data: dict = v[0]
-            console.log(data)
-            word_symobl.value = data.hwi.prs[0].mw
-            word_property.value = data.fl
-        })
-    })
+    requestWord(word_value.value)
 })
 </script>
 
@@ -70,18 +72,17 @@ onMounted(() => {
     background-color: #F5F5F5;
     border: solid 2px #666;
     display: flex;
-
     justify-content: space-between;
 
     .word-part {
         display: flex;
         align-items: center;
-    }
 
-    .button {
-        cursor: pointer;
-        display: flex;
-        padding: 5px;
+        .button {
+            cursor: pointer;
+            display: flex;
+            padding: 5px;
+        }
     }
 
     .property-part {
@@ -89,13 +90,11 @@ onMounted(() => {
 
         .symbol,
         .property {
-
             color: #666;
             border: solid 1px #666;
             padding: 5px;
             font-weight: bold;
         }
-
         .property {
             margin-left: 45px;
         }
