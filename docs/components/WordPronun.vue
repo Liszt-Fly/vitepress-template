@@ -1,7 +1,7 @@
 <template>
     <div class="word-pronun">
         <audio ref="audio"
-            :src="'https://ssl.gstatic.com/dictionary/static/sounds/oxford/' + (word != null ? word.innerText : 'test') + '--_gb_1.mp3'">
+            :src="'https://ssl.gstatic.com/dictionary/static/sounds/oxford/' + (word != null ?word_value : 'test') + '--_gb_1.mp3'">
         </audio>
 
         <div class="word-part">
@@ -18,7 +18,7 @@
             <div class="property">
                 {{ word_property }}
             </div>
-            ｜
+
             <div class="symbol">{{ word_symobl }}</div>
         </div>
     </div>
@@ -44,6 +44,8 @@ const requestWord = (word: String) => {
         })
     })
 }
+
+
 const dealWithAudio = () => {
     audio.value!.onplay = () => {
         state.value = "icon-zanting"
@@ -56,12 +58,13 @@ const playAudio = () => {
     audio.value!.play()
     state.value = "icon-zanting"
 }
-onMounted(() => {
-    dealWithAudio()
-    word_value = computed(() => {
+word_value = computed(() => {
         if (word.value == null) return "error"
         return word.value!.innerText.toLowerCase()
     })
+onMounted(() => {
+    dealWithAudio()
+
     requestWord(word_value.value)
 })
 </script>
@@ -97,6 +100,7 @@ onMounted(() => {
         }
         .property {
             margin-left: 45px;
+            margin-right: 20px;
         }
     }
 }
