@@ -203,6 +203,58 @@ const color_array: color[] = [
     {
         name: "黄丹",
         code: "#F05E1C"
+    },
+    {
+        name: "纁",
+        code: "#ED784A"
+    },
+    {
+        name: "遠州茶",
+        code: "#CA7853"
+    },
+    {
+        name: "樺茶",
+        code: "#B35C37"
+    },
+    {
+        name: "焦茶",
+        code: "#563F2E"
+    },
+    {
+        name: "赤香",
+        code: "#E3916E"
+    },
+    {
+        name: "雀茶",
+        code: "#8F5A3C"
+    },
+    {
+        name: "宍",
+        code: "#F0A986"
+    },
+    {
+        name: "宗伝唐茶",
+        code: "#A0674B"
+    },
+    {
+        name: "樺",
+        code: "#C1693C"
+    },
+    {
+        name: "深支子",
+        code: "#FB9966"
+    },
+    {
+        name: "胡桃",
+        code: "#947A6D"
+    },
+    {
+        name: "代赭",
+        code: "#A36336"
+    },
+    {
+        name: "洗柿",
+        code: "#E79460"
     }
 ]
 
