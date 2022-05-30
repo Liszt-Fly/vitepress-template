@@ -5,18 +5,18 @@ import { file } from "../interfaces/file"
 let workroot = path.resolve("docs", "target",)
 let fileTree: file[] = []
 function read(root: string, space: file[]) {
-    console.log(process.cwd())
     const list = fsp.readdirSync(root)
     if (list.length == 0) return;
     list.forEach(item => {
+
         const r_path = path.resolve(root, item)
         const stat = fsp.statSync(r_path)
-
         if (stat.isDirectory()) {
             let container: file = {
                 text: item,
                 children: [],
             }
+
             space.push(container)
             read(r_path, container.children!)
         }
@@ -25,13 +25,23 @@ function read(root: string, space: file[]) {
             let name = pathobject.base
             let noextName = path.basename(name, ".md")
             let link = "/target/" + path.relative(workroot, r_path).substring(0, path.relative(workroot, r_path).lastIndexOf("."))
-
-
-
             space.push({ text: noextName, link })
         }
     })
 }
 read(workroot, fileTree)
-console.log(JSON.stringify(fileTree, null, 2))
-export { fileTree }
+
+function getChildren(fileTree: file[], tree: file[]): any {
+    let map = new Map()
+    for (let i = 0; i < fileTree.length; i++) {
+        let concatedNav: string = `/target/${fileTree[i].text}/`
+        map.set(concatedNav, fileTree[i].children)
+        tree.push(...fileTree[i].children!)
+    }
+    return Object.fromEntries(map)
+}
+let tree: file[] = []
+let spacer = getChildren(fileTree, tree)
+console.log(JSON.stringify(spacer, null, 2))
+
+export { fileTree, spacer, tree }

@@ -10,7 +10,7 @@ export default {
 		// register global components
 
 		autoComponents().forEach((vuecomponent) => {
-			console.log(vuecomponent.module.default)
+		
 			app.component(vuecomponent.name, vuecomponent.module.default)
 		})
 	},

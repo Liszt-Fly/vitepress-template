@@ -29,3 +29,27 @@
 ```
 
 <prompt item="邮箱">注意:这段文字非常重要,我们需要单独成段来进行书写噢！</prompt>
+
+---
+
+### WordPronun 组件
+
+```html
+<word-pronun>update</word-pronun>
+```
+
+<word-pronun>quiz</word-pronun>
+
+---
+
+### MindMap 组件
+
+<mind-map></mind-map>
+
+### ACode 组件
+
+<a-code>
+```
+<hello></hello>
+```
+</a-code>

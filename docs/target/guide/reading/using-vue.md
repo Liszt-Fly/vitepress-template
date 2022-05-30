@@ -40,7 +40,7 @@ Directives also work:
 
 ### Access to Site & Page Data
 
-You can use the [`useData` helper](./api#usedata) in a `<script>` block and expose the data to the page.
+You can use the [`useData` helper](../reading/api.md#usedata) in a `<script>` block and expose the data to the page.
 
 **Input**
 
@@ -57,9 +57,9 @@ const { page } = useData()
 
 ```json
 {
-  "path": "/using-vue.html",
-  "title": "Using Vue in Markdown",
-  "frontmatter": {}
+	"path": "/using-vue.html",
+	"title": "Using Vue in Markdown",
+	"frontmatter": {}
 }
 ```
 
@@ -107,18 +107,18 @@ This is a .md using a custom component
 
 ### Registering global components in the theme
 
-If the components are going to be used across several pages in the docs, they can be registered globally in the theme (or as part of extending the default VitePress theme). Check out the [Theming Guide](./theming) for more information.
+If the components are going to be used across several pages in the docs, they can be registered globally in the theme (or as part of extending the default VitePress theme). Check out the [Theming Guide](../reading/theming.md) for more information.
 
 In `.vitepress/theme/index.js`, the `enhanceApp` function receives the Vue `app` instance so you can [register components](https://vuejs.org/guide/components/registration.html) as you would do in a regular Vue application.
 
 ```js
-import DefaultTheme from 'vitepress/theme'
+import DefaultTheme from "vitepress/theme"
 
 export default {
-  ...DefaultTheme,
-  enhanceApp({ app }) {
-    app.component('VueClickAwayExample', VueClickAwayExample)
-  }
+	...DefaultTheme,
+	enhanceApp({ app }) {
+		app.component("VueClickAwayExample", VueClickAwayExample)
+	},
 }
 ```
 
@@ -200,7 +200,7 @@ export default {
 
 ## Built-In Components
 
-VitePress provides Built-In Vue Components like `ClientOnly` and `OutboundLink`, check out the [Global Component Guide](./global-component) for more information.
+VitePress provides Built-In Vue Components like `ClientOnly` and `OutboundLink`, check out the [Global Component Guide](../reading/global-component.md) for more information.
 
 **Also see:**
 
@@ -223,11 +223,11 @@ Note this does not fix components or libraries that access Browser APIs **on imp
 ```vue
 <script>
 export default {
-  mounted() {
-    import('./lib-that-access-window-on-import').then((module) => {
-      // use code
-    })
-  }
+	mounted() {
+		import("./lib-that-access-window-on-import").then((module) => {
+			// use code
+		})
+	},
 }
 </script>
 ```
@@ -236,22 +236,22 @@ If your module `export default` a Vue component, you can register it dynamically
 
 ```vue
 <template>
-  <component v-if="dynamicComponent" :is="dynamicComponent"></component>
+	<component v-if="dynamicComponent" :is="dynamicComponent"></component>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      dynamicComponent: null
-    }
-  },
+	data() {
+		return {
+			dynamicComponent: null,
+		}
+	},
 
-  mounted() {
-    import('./lib-that-access-window-on-import').then((module) => {
-      this.dynamicComponent = module.default
-    })
-  }
+	mounted() {
+		import("./lib-that-access-window-on-import").then((module) => {
+			this.dynamicComponent = module.default
+		})
+	},
 }
 </script>
 ```

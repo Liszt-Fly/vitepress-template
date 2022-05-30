@@ -8,12 +8,12 @@ export function autonavbar(): DefaultTheme.NavItem[] {
 
     fileTree.forEach((item, index) => {
         if (item.children) {
+
             navbar.push({
                 text: fileTree[index].text,
-                link: fileTree[index].children![0].link as string,
+                link: fileTree[index].children![0].children![0].link as string,
                 activeMatch: `^/target/${fileTree[index].text}/`
             })
-
         }
     })
     console.log("-------------------------------------------------------------")

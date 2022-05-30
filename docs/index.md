@@ -19,6 +19,6 @@ features:
       VitePress generates pre-rendered static HTML for each page, and runs as an
       SPA once a page is loaded.
 home: true
-footer: 万壑有声含晚籁，数峰无语立斜阳。
+footer: 月上柳梢头，人约黄昏后。
 ---
 

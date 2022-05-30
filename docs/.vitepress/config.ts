@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { fileTree } from '../utils/autosidebar'
+import { spacer, tree } from '../utils/autosidebar'
 import { homeObject } from '../config/config'
 import { autonavbar } from '../utils/autonavbar'
 
@@ -24,9 +24,14 @@ export default defineConfig({
 
 
         nav: autonavbar(),
+        sidebar: spacer as unknown as any
+        // sidebar: {
+        //     '/target/guide/': getGuideSidebar(),
+        //     '/config/': getConfigSidebar(),
 
 
-        sidebar: fileTree as unknown as any
+        // }
+
     }
 })
 
