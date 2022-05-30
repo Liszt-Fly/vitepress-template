@@ -27,6 +27,5 @@ onMounted(() => {
     padding: 5px 5px 5px 5px;
     border-radius: 5px;
     font-family: "FZZJ-ZYWBJW";
-
 }
 </style>

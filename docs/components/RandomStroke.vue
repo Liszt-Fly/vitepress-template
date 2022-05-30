@@ -1,5 +1,7 @@
 <template>
-    <span class="container" ref="emph">属于真的了</span>
+    <span class="container" ref="emph">
+        <slot></slot>
+    </span>
 </template>
 
 <script lang="ts" setup>
