@@ -22,11 +22,6 @@ export default defineConfig({
             indexName: 'vitepress'
         },
 
-        carbonAds: {
-            carbon: 'CEBDT27Y',
-            custom: 'CKYD62QM',
-            placement: 'vuejsorg'
-        },
 
         nav: autonavbar(),
 
