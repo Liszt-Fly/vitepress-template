@@ -9,7 +9,6 @@ import { matter_home_structure } from '../interfaces/index_type'
 export const root = path.resolve(basePath, "docs", "target")
 const index_file = path.resolve(basePath, "docs", "index.md")
 export function foreach(folder: string) {
-    console.log(path.resolve(root))
     const content = fsp.readFileSync(index_file)
     console.log(content)
     const object = matter(content) as unknown as matter_home_structure
