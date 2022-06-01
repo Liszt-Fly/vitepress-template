@@ -1,5 +1,6 @@
 import fsp from "fs-extra"
 import path from "path"
+import { DefaultTheme } from "vitepress"
 import { file } from "../interfaces/file"
 
 let workroot = path.resolve("docs", "target",)
@@ -11,20 +12,23 @@ function read(root: string, space: file[]) {
 
         const r_path = path.resolve(root, item)
         const stat = fsp.statSync(r_path)
+
+        let pathobject = path.parse(r_path)
+        let name = pathobject.base
+        let length = "/target/".concat(path.relative(workroot, r_path)).lastIndexOf(".")
+        let noextName = path.basename(name, ".md")
+        let folderLink = "/target/" + path.relative(workroot, r_path)
+        let link = "/target/" + path.relative(workroot, r_path).substring(0, path.relative(workroot, r_path).lastIndexOf("."))
         if (stat.isDirectory()) {
             let container: file = {
                 text: item,
                 children: [],
+                link: folderLink
             }
-
             space.push(container)
             read(r_path, container.children!)
         }
         else {
-            let pathobject = path.parse(r_path)
-            let name = pathobject.base
-            let noextName = path.basename(name, ".md")
-            let link = "/target/" + path.relative(workroot, r_path).substring(0, path.relative(workroot, r_path).lastIndexOf("."))
             space.push({ text: noextName, link })
         }
     })
@@ -44,6 +48,6 @@ function getChildren(fileTree: file[], tree: file[]): any {
 }
 let tree: file[] = []
 let spacer = getChildren(fileTree, tree)
-console.log(JSON.stringify(spacer, null, 2))
+
 
 export { fileTree, spacer, tree }

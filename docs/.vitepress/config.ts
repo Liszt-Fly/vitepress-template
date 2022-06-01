@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { spacer, tree } from '../utils/autosidebar'
+import { spacer, tree, fileTree } from '../utils/autosidebar'
 import { homeObject } from '../config/config'
 import { autonavbar } from '../utils/autonavbar'
 
@@ -21,17 +21,7 @@ export default defineConfig({
             apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
             indexName: 'vitepress'
         },
-
-
         nav: autonavbar(),
-        sidebar: spacer as unknown as any
-        // sidebar: {
-        //     '/target/guide/': getGuideSidebar(),
-        //     '/config/': getConfigSidebar(),
-
-
-        // }
-
     }
 })
 

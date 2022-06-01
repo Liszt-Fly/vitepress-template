@@ -15,14 +15,13 @@ export function autonavbar(): DefaultTheme.NavItem[] {
             for (let i = 0; i < item.children.length; i++) {
                 (navbar[index] as (DefaultTheme.NavItemWithChildren)).items[i] = {
                     text: item.children[i].text,
-                    link: `${item.children[i].children![0].link}`,
-                    activeMatch: `/target/${navbar[index].text}/${item.text}`
+                    link: `${item.children[i].link}`,
+                    activeMatch: `/target/ ${navbar[index].text}/${item.text}`
                 }
             }
         }
-
     })
     console.log("-------------------------------------------------------------")
-
+    console.log(JSON.stringify(navbar, null, 2))
     return navbar
 }
