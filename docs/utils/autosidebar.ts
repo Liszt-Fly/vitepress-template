@@ -34,9 +34,11 @@ read(workroot, fileTree)
 function getChildren(fileTree: file[], tree: file[]): any {
     let map = new Map()
     for (let i = 0; i < fileTree.length; i++) {
-        let concatedNav: string = `/target/${fileTree[i].text}/`
-        map.set(concatedNav, fileTree[i].children)
-        tree.push(...fileTree[i].children!)
+        for (let m = 0; m < fileTree[i].children!.length; m++) {
+            let concatedNav: string = `/target/${fileTree[i].text}/${fileTree[i].children![m].text}/`
+            map.set(concatedNav, [fileTree[i].children![m]])
+            tree.push(...fileTree[i].children!)
+        }
     }
     return Object.fromEntries(map)
 }

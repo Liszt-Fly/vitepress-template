@@ -11,9 +11,9 @@ const index_file = path.resolve(basePath, "docs", "index.md")
 export function foreach(folder: string) {
     console.log(path.resolve(root))
     const content = fsp.readFileSync(index_file)
-    console.log(content)
+
     const object = matter(content) as unknown as matter_home_structure
-    console.log(object)
+
     request("https://v1.jinrishici.com/all.txt", function (error, response, body) {
         object.data = homeObject
         object.data.footer = body
