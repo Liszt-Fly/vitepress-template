@@ -1,7 +1,7 @@
 <template>
     <div class="word-pronun">
         <audio ref="audio"
-            :src="'https://ssl.gstatic.com/dictionary/static/sounds/oxford/' + (word != null ?word_value : 'test') + '--_gb_1.mp3'">
+            :src="'https://media.merriam-webster.com/audio/prons/en/us/mp3/'+sub_dict+'/'+word_pronun_ref+'.mp3'">
         </audio>
 
         <div class="word-part">
@@ -33,12 +33,18 @@ let word = ref<HTMLDivElement | null>()
 const audio = ref<HTMLAudioElement | null>();
 let word_value: ComputedRef<String>
 let word_symobl: Ref<String> = ref("")
+let word_pronun_ref:Ref<String>=ref("")
 let word_property: Ref<String> = ref("")
+let sub_dict:ComputedRef<String>
 //* methods
+
+
 const requestWord = (word: String) => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}\?key\=acab3f0a-f181-49df-82b1-8dce68443227`).then((val) => {
         val.json().then((v) => {
             let data: dict = v[0]
+            console.log(data.hwi.prs)
+            word_pronun_ref.value=data.hwi.prs[0].sound.audio
             word_symobl.value = data.hwi.prs[0].mw
             word_property.value = data.fl
         })
@@ -58,13 +64,22 @@ const playAudio = () => {
     audio.value!.play()
     state.value = "icon-zanting"
 }
+sub_dict=computed(()=>{
+
+  let rule=/^[_][0-9]/
+  if(rule.test(word_pronun_ref.value as string)){
+      return "number"
+  }
+  else{
+      return word_pronun_ref.value[0]
+  }
+})
 word_value = computed(() => {
         if (word.value == null) return "error"
         return word.value!.innerText.toLowerCase()
     })
 onMounted(() => {
     dealWithAudio()
-
     requestWord(word_value.value)
 })
 </script>

@@ -63,7 +63,7 @@ interface Router {
 
 - **Type**: `(path: string) => string`
 
-  Appends the configured [`base`](../config/basics#base) to a given URL path. Also see [Base URL](./assets#base-url).
+  Appends the configured [`base`](../config/basics#base) to a given URL path. Also see [Base URL](../assets.md#base-url).
 
 ## Global Components
 
@@ -71,7 +71,7 @@ VitePress comes with few built-in component that can be used globally. You may u
 
 ### `<Content/>`
 
-The `<Content/>` component displays the rendered markdown contents. Useful [when creating your own theme](./theming).
+The `<Content/>` component displays the rendered markdown contents. Useful [when creating your own theme](../theming.md).
 
 ```vue
 <template>

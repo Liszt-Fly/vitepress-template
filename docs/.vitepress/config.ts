@@ -2,7 +2,6 @@ import { defineConfig } from 'vitepress'
 import { spacer, tree, fileTree } from '../utils/autosidebar'
 import { homeObject } from '../config/config'
 import { autonavbar } from '../utils/autonavbar'
-
 export default defineConfig({
     lang: 'en-US',
     title: homeObject.heroText,
@@ -15,7 +14,6 @@ export default defineConfig({
         editLinks: true,
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
-
         algolia: {
             appId: '8J64VVRP8K',
             apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
