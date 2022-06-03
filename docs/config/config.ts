@@ -4,8 +4,8 @@ import { fileTree } from "../utils/autosidebar"
 export let basePath = process.cwd();
 //TODO 配置HOMEOBJECT 用于index.md中使用
 export let homeObject: home_structure = {
-    heroText: "默认标题",
-    heroImage: "/mysql.png",
+    heroText: "JavaScript学习日志",
+    heroImage: "/马卡龙.png",
     heroAlt: "图片显示不出的代替文字",
     tagline: "对网站的描述",
     actionText: "Get Started",

@@ -1,6 +1,6 @@
 ---
-heroText: 默认标题
-heroImage: /mysql.png
+heroText: JavaScript学习日志
+heroImage: /马卡龙.png
 heroAlt: 图片显示不出的代替文字
 tagline: 对网站的描述
 actionText: Get Started
@@ -19,6 +19,6 @@ features:
       VitePress generates pre-rendered static HTML for each page, and runs as an
       SPA once a page is loaded.
 home: true
-footer: 月上柳梢头，人约黄昏后。
+footer: 月色穿帘风入竹，倚屏双黛愁时。
 ---
 

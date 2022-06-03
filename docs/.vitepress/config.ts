@@ -25,12 +25,7 @@ export default defineConfig({
 
         nav: autonavbar(),
         sidebar: spacer as unknown as any
-        // sidebar: {
-        //     '/target/guide/': getGuideSidebar(),
-        //     '/config/': getConfigSidebar(),
 
-
-        // }
 
     }
 })
