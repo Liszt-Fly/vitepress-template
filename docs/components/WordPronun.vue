@@ -91,6 +91,7 @@ onMounted(() => {
     border: solid 2px #666;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
 
     .word-part {
         display: flex;
